@@ -1,7 +1,7 @@
 :root {
   --dark-blue: #0a3871;
   --main-color: #f3f5fc;
-  --ligth-blue: #d8dfe8;
+  --light-blue: #d8dfe8;
   --inter-font: "Inter", sans-serif;
 }
 
@@ -73,7 +73,7 @@ header img {
   border: 1px solid var(--dark-blue);
 }
 
-.form__btn--secundary {
+.form__btn--secondary {
   background: transparent;
   color: var(--dark-blue);
   font-size: 1.6rem;

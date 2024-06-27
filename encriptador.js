@@ -1,13 +1,13 @@
-/* en todos los lugares donde estan dos diagonales no he logrado que se componga
-como por ejemplo no he logrado que se quite la imagen de donde deberia ir el texto, 
-tampoco he logrado que aparezca el logo de batman cuando se este escribiendo y no he 
-logrado que los mensajes de el resultado es se coloquen asi como entre otras cosas mas
+/* En todos los lugares donde están dos diagonales no he logrado que se componga
+como por ejemplo no he logrado que se quite la imagen de donde debería ir el texto,
+tampoco he logrado que aparezca el logo de Batman cuando se esté escribiendo y no he
+logrado que los mensajes del resultado se coloquen así como entre otras cosas más
 */
 
 const d = document;
 const textarea = d.getElementById("miTextarea");
-const muneco = d.getElementById("result__img");
-const carga = d.getElementById(".loader");
+const muneco = d.querySelector(".result__img");
+const carga = d.querySelector(".loader");
 const resultadotext = d.getElementById("result__text");
 const resulttitle = d.getElementById("result__title");
 const buttonencrip = d.getElementById("encriptarBtn");
@@ -48,22 +48,25 @@ function desencriptarMensaje(mensaje) {
 
   return mensajeDesencriptado;
 }
-//Tendria que ocultarme los elementos pero no lo hace
+
+// Tendría que ocultar los elementos pero no lo hace
 textarea.addEventListener("input", (e) => {
-  //  muneco.style.display = "none";
-  //carga.classList.remove("hidden");
-  //resulttitle.textContent = "capturando mensaje";
+  muneco.style.display = "none";
+  carga.classList.remove("hidden");
+  resulttitle.textContent = "capturando mensaje";
   resultadotext.textContent = "";
 });
-//si funciona el botos enccriptar pero no aparece el mensaje "el resultado es:" y no se oculta la imajen ni el texto del recuadro
+
+// Si funciona el botón encriptar pero no aparece el mensaje "el resultado es:" y no se oculta la imagen ni el texto del recuadro
 buttonencrip.addEventListener("click", (e) => {
   e.preventDefault();
   let mensaje = textarea.value.toLowerCase();
   let mensajeEncriptado = encriptarMensaje(mensaje);
   resultadotext.textContent = mensajeEncriptado;
   buttoncopiar.classList.remove("hidden");
-  //resulttitle.textContent = "el resultado es:";
+  resulttitle.textContent = "el resultado es:";
 });
+
 buttondesencrip.addEventListener("click", (e) => {
   e.preventDefault();
   let mensaje = textarea.value.toLowerCase();
@@ -71,11 +74,12 @@ buttondesencrip.addEventListener("click", (e) => {
   resultadotext.textContent = mensajeDesencriptado;
   buttoncopiar.classList.remove("hidden");
 });
+
 buttoncopiar.addEventListener("click", () => {
   let textoCopiado = resultadotext.textContent;
   navigator.clipboard.writeText(textoCopiado).then(() => {
-    //muneco.style.display="block"
-    //carga.classList.add("hidden");
-    resulttitle.textContent = "el texto se copio";
+    muneco.style.display = "block";
+    carga.classList.add("hidden");
+    resulttitle.textContent = "el texto se copió";
   });
 });
